@@ -44,7 +44,7 @@ namespace FraseRebote
 
                 #region Control de la frase
 
-                if (frase.Length == 0 || (frase.Replace(" ","")).Length==0)  // si la frase esta vacia yo le pongo por defectyo una frase
+                if (frase.Length == 0 || (frase.Replace(" ","")).Length==0)  // si la frase esta vacia yo le pongo por defecto una frase
                 {
                     frase = "Console.Escribe";
                 }
@@ -139,14 +139,14 @@ namespace FraseRebote
             #region variables
 
             int numerocolor=0;
-            //se crea un array de tipo console color al que se le añaden los calores de la enumeracion de ConsoleColor
+            //se crea un array de tipo console color al que se le añaden los colores de la enumeracion de ConsoleColor
             ConsoleColor[] colores = (ConsoleColor[])ConsoleColor.GetValues(typeof(ConsoleColor));
             Random rnd = new Random();
             #endregion
 
             numerocolor =rnd.Next(colores.Length);
 
-            if (colores[numerocolor] != ConsoleColor.Black)// como la pantalla es negra de fondo se poenexto apra evitar que no se vea la frase al tener el color negro
+            if (colores[numerocolor] != ConsoleColor.Black)// como la pantalla es negra de fondo se poene el texto para evitar que no se vea la frase al tener el color negro
             {
                 Console.ForegroundColor = colores[numerocolor];
             }
