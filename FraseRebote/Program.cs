@@ -24,7 +24,7 @@ namespace FraseRebote
             const int TMAX=200; //tiempo máximo de espera
             const int TMIN=30;  //tiempo minimo de espera
             const int MAXLONFRASE = 50; //longitud máxima de la frase
-            const int ESPERA = 2500;
+            const int ESPERA = 2500;    //constante con que indica la espera en caso de poner una flase demasiado larga
             int alto = 10; //alto de la pantalla
             int tiempo = 90,    //tiempo de espera en el Thread
             posicion = 0,       //posicion en la que se encuentra la frase
@@ -52,10 +52,10 @@ namespace FraseRebote
                 {
                     Console.WriteLine("Frase demasiado larga, máximo 50 caractertes(se recorta la frase)");
                     Thread.Sleep(ESPERA);
-                    frase = frase.Substring(0, MAXLONFRASE);
-                    frase = frase.Trim();
+                    frase = frase.Substring(0, MAXLONFRASE);    // si la frase es demasiado larga se acorta
+                    frase = frase.Trim();           //elimina los espacios por delante y por detras de la frase
                 }
-                frase = " " + frase + " ";
+                frase = " " + frase + " ";  //añade un espacio por delante y por detras para que no deje una estela de letras al pintarlo en pantalla
                 longFrase = frase.Length-1; //longitud de la frase para controlar el rebote el -1 es para controlar el rebote
                 #endregion
 
@@ -103,7 +103,7 @@ namespace FraseRebote
                         }
                         if (teclaPulsada.Key == ConsoleKey.Escape)  //sale si se pulsa la tecla escape
                         {
-                            Environment.Exit(0);
+                            Environment.Exit(0);    //cierre de la aplicacion
                         }
                     }
                     #endregion
@@ -112,7 +112,7 @@ namespace FraseRebote
                 }
                 #endregion
             }
-            catch (Exception)
+            catch (Exception)   //control de las excepciones de manera genérica
             {
                 Console.WriteLine("Ups!, Error inesperado");
                 Console.ReadLine();
@@ -128,12 +128,14 @@ namespace FraseRebote
                 string frase = string.Empty;
                 Console.WriteLine("Introduzca la frase que desea ver rebotando: ");
                 frase = Console.ReadLine();
-                frase = frase.Trim();
+                frase = frase.Trim();  
                return frase;
         }
 
         #region color a la palabra
-
+       /// <summary>
+        /// metodo para darle un color aleatorio a la frase cada vez que rebota en un lado
+        /// </summary>
         static void color()
         {
             #region variables
